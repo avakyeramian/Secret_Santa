@@ -167,7 +167,7 @@ function content()
             //var text = reader.result;
             //var node = document.getElementById('output');
             //node.innerText = text;
-            var lines = reader.result.split('\n');
+            var lines = reader.result.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
             var new_guests = [];
             for(var line = 0; line < lines.length; line++){
                 if(lines[line]!=""){
@@ -217,7 +217,7 @@ function content()
         
         var string = "";
         
-        for(var item in guests){
+        for(var item in copySantaGuests){
             if(string!=""){
                 string = string+"\r\n";
             }
